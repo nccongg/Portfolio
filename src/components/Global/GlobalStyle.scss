@@ -1,0 +1,31 @@
+@import 'normalize.css';
+
+:root {
+  --primary-color: #0ee258;
+  --primary-hover-color: #06c649;
+
+  --black: black;
+  --white: white;
+  --text-color: #333;
+  --bg-color: #1c1c22;
+  // Default layout
+  --default-layout-header-height: 60px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  background-color: var(--bg-color);
+  color: var(--white);
+}

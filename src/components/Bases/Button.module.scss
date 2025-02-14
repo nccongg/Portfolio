@@ -1,0 +1,12 @@
+.button {
+  padding: 10px 20px;
+  border-radius: 18px;
+}
+.secondary {
+}
+.primary {
+  background-color: var(--primary-color);
+}
+.primary:hover {
+  background-color: var(--primary-hover-color);
+}
