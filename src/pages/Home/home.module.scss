@@ -1,0 +1,64 @@
+.container {
+  flex: 1;
+  margin: 5% 15%;
+  height: 100%;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  gap: 70px;
+  @media (max-width: 1279px) {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+}
+
+.text-content {
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  @media (max-width: 1279px) {
+    text-align: center;
+  }
+}
+
+.name {
+  font-size: 56px;
+  @media (max-width: 1279px) {
+    font-size: 36px;
+  }
+}
+.nameText {
+  color: var(--primary-color);
+}
+
+.button-container {
+  margin: 20px 0;
+  display: flex;
+  width: auto;
+  align-items: center;
+  @media (max-width: 1279px) {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.downloadCVButton {
+  width: auto;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.downLoadIcon {
+  margin-left: 7px;
+}
+
+.image-content {
+  display: flex;
+  //   background-color: wheat;
+}

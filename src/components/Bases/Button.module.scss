@@ -1,12 +1,26 @@
 .button {
+  display: inline-block;
   padding: 10px 20px;
   border-radius: 18px;
+  width: max-content;
+  height: max-content;
 }
-.secondary {
-}
+// .secondary {
+// }
 .primary {
   background-color: var(--primary-color);
 }
 .primary:hover {
   background-color: var(--primary-hover-color);
+}
+
+.outline {
+  border: 0.5px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.outline:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
 }

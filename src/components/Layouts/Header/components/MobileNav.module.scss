@@ -46,6 +46,7 @@
 
 .nav {
   position: absolute;
+
   height: 100%;
   width: 70%;
   right: 0;
@@ -56,6 +57,7 @@
   transition: transform 0.5s ease;
 }
 .nav.showNav {
+  z-index: 1;
   transform: translateX(0%);
   animation: slideIn 0.5s ease;
   transition: transform 0.5s ease;

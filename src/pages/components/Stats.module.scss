@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  @media (max-width: 1279px) {
+    gap: 70px;
+    justify-content: center;
+  }
+  // background-color: red;
+}
+.stat-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  width: 100px;
+  height: 50px;
+}
+.count {
+  height: max-content;
+  font-size: 48px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+}

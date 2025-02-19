@@ -1,11 +1,48 @@
-import { Outlet } from 'react-router-dom';
+import { FiDownload } from 'react-icons/fi';
+import styles from './home.module.scss';
+import classNames from 'classnames/bind';
+import Button from '../../components/Bases/Button';
+import Social from '../components/Social';
+import Avatar from '../components/Avatar';
+import Stats from '../components/Stats';
+
+const cx = classNames.bind(styles);
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Welcome to the home page!</p>
-      <Outlet /> {/* Đây là nơi hiển thị nội dung con */}
+    <div className={cx('container')}>
+      <div className={cx('content')}>
+        {/* Text */}
+        <div className={cx('text-content')}>
+          <span>Software Developer</span>
+          <h1 className={cx('name')}>
+            Hello I'm <br />
+            <span className={cx('nameText')}>Chi Cong Nguyen</span>
+          </h1>
+          <p>
+            I am a student in the Honor Program in Computer Science at the University of Science. I am a Software
+            Engineer proficient in various programming languages and technologies.
+          </p>
+          <div className={cx('button-container')}>
+            <Button variant="outline" className={cx('downloadCVButton')}>
+              <span>Download CV</span>
+              <FiDownload className={cx('downLoadIcon')} />
+            </Button>
+            <div className={cx('social')}>
+              <Social />
+            </div>
+          </div>
+        </div>
+
+        {/* image */}
+        <div className={cx('image-content')}>
+          <Avatar />
+        </div>
+      </div>
+      {/* Stats */}
+      <div className={cx('stats-content')}>
+        <Stats />
+      </div>
     </div>
   );
 }

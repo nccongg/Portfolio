@@ -29,3 +29,9 @@ body {
   background-color: var(--bg-color);
   color: var(--white);
 }
+
+span,
+h1 {
+  margin: 0;
+  padding: 0;
+}
