@@ -55,9 +55,11 @@
   transform: translateX(100%);
   animation: slideOut 0.5s ease;
   transition: transform 0.5s ease;
+  display: none;
 }
 .nav.showNav {
   z-index: 1;
+  display: flex;
   transform: translateX(0%);
   animation: slideIn 0.5s ease;
   transition: transform 0.5s ease;
