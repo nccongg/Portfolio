@@ -19,7 +19,7 @@ function Home() {
             Hello I'm <br />
             <span className={cx('nameText')}>Chi Cong Nguyen</span>
           </h1>
-          <p>
+          <p className={cx('introduce')}>
             I am a student in the Honor Program in Computer Science at the University of Science. I am a Software
             Engineer proficient in various programming languages and technologies.
           </p>

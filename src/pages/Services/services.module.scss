@@ -1,19 +1,20 @@
 .container {
   display: flex;
-  gap: 20px;
-  margin-top: 100px;
+  margin: 5% 15%;
   flex-wrap: wrap;
   justify-content: center;
 }
 .service {
   display: flex;
-  width: 600px;
+  width: 45%;
+  min-width: 450px;
   padding: 10px;
   margin: 20px;
   flex-direction: column;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  @media (max-width: 1279px) {
-    width: 450px;
+  @media (max-width: 1000px) {
+    width: 80%;
+    max-width: 450px;
   }
 }
 .service-header {
@@ -31,14 +32,14 @@
   font-size: 48px;
   font-weight: bold;
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 0.5px #ffffffbf;
 }
 .service-link {
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin: 0 30px;
+  margin: 0 10px;
 
   justify-content: center;
   align-items: center;
@@ -50,8 +51,9 @@
   transform: rotate(30deg);
 }
 
-// .service-title {
-// }
+.service-title {
+  font-size: 36px;
+}
 
 .service-header {
   &:hover {
@@ -75,6 +77,8 @@
 .service-description {
   margin-top: 10px;
   margin-right: 20px;
-  font-size: 18px;
+  padding: 1px;
+  font-size: 15px;
   font-weight: normal;
+  color: var(--text-description-color);
 }
