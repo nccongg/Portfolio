@@ -42,6 +42,7 @@
 .overlay.showOverlay {
   opacity: 1;
   pointer-events: all;
+  z-index: 1;
 }
 
 .nav {
@@ -58,7 +59,7 @@
   display: none;
 }
 .nav.showNav {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   transform: translateX(0%);
   animation: slideIn 0.5s ease;

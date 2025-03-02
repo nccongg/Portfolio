@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import styles from './Stairs.module.scss';
 import classNames from 'classnames/bind';
-import { StrictMode } from 'react';
 
 const cx = classNames.bind(styles);
 function Stairs() {
@@ -16,7 +15,6 @@ function Stairs() {
         {[...Array(6)].map((_, index) => {
           const delayValue = reverseIndex(index) * 0.1;
           const leftValue = index * 16.6666666667;
-          console.log(`Index: ${index}, leftValue: ${leftValue}`);
 
           return (
             <motion.div

@@ -1,0 +1,132 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 5% 15%;
+
+  @media (max-width: 1279px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.text-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (max-width: 1279px) {
+    width: 100%;
+  }
+}
+
+.project-num {
+  font-size: 100px;
+  color: transparent;
+  font-weight: bold;
+  -webkit-text-stroke: 0.1px white;
+}
+
+.project-title {
+  font-size: 36px;
+}
+
+.project-description {
+  color: var(--text-description-color);
+  font-size: 15px;
+}
+
+.stack-container {
+  display: flex;
+  gap: 10px;
+  color: var(--primary-color);
+}
+
+.border-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  margin-top: 20px;
+  @media (min-width: 1280px) {
+    width: 90%;
+  }
+}
+
+.link-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+.live-project-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-item-color);
+}
+.live-project-icon {
+  font-size: 24px;
+}
+.live-project-tooltip {
+  background-color: white;
+  padding: 3px 5px;
+  color: black;
+  border-radius: 4px;
+  animation: slideUp 0.5s ease-in-out;
+  transition: transform 0.5s ease;
+}
+
+.silde-container {
+  width: 50%;
+  height: 500px;
+  z-index: 0;
+  // background-color: blue;
+  @media (max-width: 1279px) {
+    width: 100%;
+  }
+}
+
+.swiper-container {
+  // width: 500px;
+  position: relative;
+  justify-content: center;
+  // height: 450px;
+}
+
+.swiper {
+  // height: auto;
+  // width: 500px;
+  background-color: red;
+}
+
+.swiper-img {
+  object-fit: cover;
+  height: 450px;
+}
+
+.worksl-container {
+  display: flex;
+}
+
+.worksl-btn {
+  display: block;
+  width: 10px;
+  background-color: red;
+}
+
+.worksl-icon {
+  font-size: 90px;
+}

@@ -18,9 +18,30 @@
   border: 0.5px solid var(--primary-color);
   background-color: transparent;
   color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.outline::before {
+  content: '';
+  position: absolute;
+  background-color: var(--primary-color);
+  height: 500px;
+  width: 500px;
+  top: 100%;
+  left: 100%;
+  transition: all 0.8s ease-in-out;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.outline:hover::before {
+  color: var(--bg-color);
+  top: -100px;
+  left: -100px;
 }
 
 .outline:hover {
-  background-color: var(--primary-color);
   color: var(--bg-color);
+  transition: all 0.5s ease-in-out;
 }

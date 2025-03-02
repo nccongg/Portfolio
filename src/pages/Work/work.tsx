@@ -1,7 +1,115 @@
+import classNames from 'classnames/bind';
+import styles from './work.module.scss';
+import { useRef, useState } from 'react';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
+import { FaCaretLeft, FaCaretRight, FaGithub } from 'react-icons/fa';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import WorkSlideBtns from '../components/WorkSlideBtn';
+const cx = classNames.bind(styles);
+
+const projects = [
+  {
+    num: '01',
+    category: 'Frontend',
+    title: 'Project 01',
+    description: 'This is project 1.',
+    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'Javascript' }],
+    image: '/src/assets/imgs/TREASURE (1).png',
+    live: '',
+    github: '',
+  },
+  {
+    num: '02',
+    category: 'Fullstack',
+    title: 'Project 02',
+    description: 'This is project 1.',
+    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'Javascript' }],
+    image: '/src/assets/imgs/TREASURE (6).png',
+    live: '',
+    github: '',
+  },
+  {
+    num: '03',
+    category: 'Frontend',
+    title: 'Project 03',
+    description: 'This is project 3 - Mobile Project.',
+    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'React Native' }],
+    image: '/src/assets/imgs/TREASURE (7).png',
+    live: '',
+    github: '',
+  },
+];
 function Work() {
+  const [project, setProject] = useState(projects[0]);
+  const handleSlideChange = (swpiper: any) => {
+    const currentIndex = swpiper.activeIndex;
+    setProject(projects[currentIndex]);
+  };
+
+  const swiperRef = useRef(null);
+
   return (
-    <div>
-      <h1>Work</h1>
+    <div className={cx('container')}>
+      <div className={cx('text-container')}>
+        <span className={cx('project-num')}>{project.num}</span>
+
+        <h2 className={cx('project-title')}>{project.category} Project</h2>
+        <p className={cx('project-description')}>{project.description}</p>
+        <div className={cx('stack-container')}>
+          {project.stack.map((item, index) => {
+            return (
+              <div key={index}>
+                {item.name}
+                {index !== project.stack.length - 1 && ','}
+              </div>
+            );
+          })}
+        </div>
+        <div className={cx('border-line')}></div>
+        <div className={cx('link-container')}>
+          <Tooltip.Provider delayDuration={100}>
+            <Tooltip.Root>
+              <Tooltip.Trigger asChild>
+                <div className={cx('live-project-wrapper')}>
+                  <FaArrowUpRightFromSquare className={cx('live-project-icon')} />
+                </div>
+              </Tooltip.Trigger>
+              <Tooltip.Content className={cx('live-project-tooltip')}>Live project</Tooltip.Content>
+            </Tooltip.Root>
+          </Tooltip.Provider>
+
+          <Tooltip.Provider delayDuration={100}>
+            <Tooltip.Root>
+              <Tooltip.Trigger asChild>
+                <div className={cx('live-project-wrapper')}>
+                  <FaGithub className={cx('live-project-icon')} />
+                </div>
+              </Tooltip.Trigger>
+              <Tooltip.Content className={cx('live-project-tooltip')}>Github repo</Tooltip.Content>
+            </Tooltip.Root>
+          </Tooltip.Provider>
+        </div>
+      </div>
+      <div className={cx('silde-container')}>
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          onSlideChange={handleSlideChange}
+          onSwiper={(swiper) => console.log(swiper)}
+          className={cx('swiper-container')}
+        >
+          {projects.map((item, index) => {
+            return (
+              <SwiperSlide key={index} className={cx('swiper')}>
+                <img className={cx('swiper-img')} src={item.image} />
+              </SwiperSlide>
+            );
+          })}
+          <WorkSlideBtns container="worksl-container" btn="worksl-btn" icon="worksl-icon" />
+        </Swiper>
+      </div>
     </div>
   );
 }

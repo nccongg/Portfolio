@@ -1,0 +1,31 @@
+.worksl-container {
+  display: flex;
+  align-items: end;
+  justify-content: flex-end;
+  gap: 10px;
+
+  @media (max-width: 1279px) {
+    justify-content: space-between;
+    position: relative;
+    top: -250px;
+    z-index: 1;
+  }
+}
+
+.worksl-btn {
+  height: 40px;
+  width: 40px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.worksl-btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.worksl-icon {
+  font-size: 20px;
+}
