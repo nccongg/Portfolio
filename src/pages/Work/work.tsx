@@ -8,8 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import WorkSlideBtns from '../components/WorkSlideBtn';
 import { Link } from 'react-router-dom';
-import CoffeeAppImg from '../../assets/imgs/CoffeeApp.png';
-import Sokoban from '../../assets/imgs/Skonaban.png';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +19,7 @@ const projects = [
     description:
       'CoffeeTime is a modern user interface for a coffee ordering app, built with React Native and Expo. This project features responsive and intuitive screens like home, coffee menu, order details, and user profile. Focused on delivering a clean, functional design, it is ideal for showcasing a seamless mobile app experience.',
     stack: [{ name: 'React Native' }, { name: 'UI Kitten' }, { name: 'React Navigation' }],
-    image: CoffeeAppImg,
+    image: 'imgs/CoffeeApp.png',
     live: '',
     github: 'https://github.com/nccongg/CoffeeTime',
   },
@@ -32,7 +30,7 @@ const projects = [
     description:
       'Developed a Sokoban puzzle solver using BFS, DFS, UCS, and A* algorithms with a Python-based GUI for visualization.',
     stack: [{ name: 'Python' }, { name: 'Algorithms' }],
-    image: Sokoban,
+    image: 'imgs/Skonaban.png',
     live: '',
     github: 'https://github.com/nccongg/Sokoban-UI',
   },

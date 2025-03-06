@@ -10,7 +10,7 @@ function Avatar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 1, duration: 1, ease: 'easeInOut' } }}
       >
-        <img src="src\assets\avt.png" alt="Avatar" className={cx('avatar')} />
+        <img src="imgs/avt.png" alt="Avatar" className={cx('avatar')} />
       </motion.div>
 
       <motion.svg viewBox={'0 0 506 506'} xmlns="http://www.w3.org/2000/svg" className={cx('svg')}>

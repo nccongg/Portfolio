@@ -5,7 +5,6 @@ import Button from '../../components/Bases/Button';
 import Social from '../components/Social';
 import Avatar from '../components/Avatar';
 import Stats from '../components/Stats';
-import Cv from '../../assets/pdfs/NguyenChiCong.pdf';
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +24,7 @@ function Home() {
             Engineer proficient in various programming languages and technologies.
           </p>
           <div className={cx('button-container')}>
-            <a href={Cv} download="NguyenChiCong_CV.pdf" className={cx('downloadCVa')}>
+            <a href="pdfs/NguyenChiCong.pdf" download="NguyenChiCong_CV.pdf" className={cx('downloadCVa')}>
               <Button variant="outline" className={cx('downloadCVButton')}>
                 <span>Download CV</span>
                 <FiDownload className={cx('downLoadIcon')} />
