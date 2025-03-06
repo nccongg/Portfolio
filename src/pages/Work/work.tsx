@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './work.module.scss';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
-import { FaCaretLeft, FaCaretRight, FaGithub } from 'react-icons/fa';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { FaGithub } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import WorkSlideBtns from '../components/WorkSlideBtn';
 import { Link } from 'react-router-dom';

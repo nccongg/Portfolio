@@ -28,11 +28,11 @@ const infor = [
   },
 ];
 
-const options = [
-  { value: 'web-design', label: 'Web design' },
-  { value: 'app-design', label: 'App design' },
-  { value: 'logo-design', label: 'Logo design' },
-];
+// const options = [
+//   { value: 'web-design', label: 'Web design' },
+//   { value: 'app-design', label: 'App design' },
+//   { value: 'logo-design', label: 'Logo design' },
+// ];
 
 function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -58,11 +58,11 @@ function Contact() {
       });
   }
 
-  const handleClick = () => {
-    if (formRef.current) {
-      handleSubmit({ preventDefault: () => {}, currentTarget: formRef.current } as React.FormEvent<HTMLFormElement>);
-    }
-  };
+  // const handleClick = () => {
+  //   if (formRef.current) {
+  //     handleSubmit({ preventDefault: () => {}, currentTarget: formRef.current } as React.FormEvent<HTMLFormElement>);
+  //   }
+  // };
 
   return (
     <div className={cx('container')}>

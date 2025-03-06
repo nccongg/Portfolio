@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import Stairs from './Stairs';
 import styles from './StairTransition.module.scss';
 import classNames from 'classnames/bind';
-import { motion } from 'framer-motion';
 const cx = classNames.bind(styles);
 
 function StairTransition() {
