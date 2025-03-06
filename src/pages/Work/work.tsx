@@ -7,39 +7,42 @@ import { FaCaretLeft, FaCaretRight, FaGithub } from 'react-icons/fa';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import WorkSlideBtns from '../components/WorkSlideBtn';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const projects = [
   {
     num: '01',
-    category: 'Frontend',
-    title: 'Project 01',
-    description: 'This is project 1.',
-    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'Javascript' }],
-    image: '/src/assets/imgs/TREASURE (1).png',
+    category: 'Mobile Frontend',
+    title: 'CoffeeTime',
+    description:
+      'CoffeeTime is a modern user interface for a coffee ordering app, built with React Native and Expo. This project features responsive and intuitive screens like home, coffee menu, order details, and user profile. Focused on delivering a clean, functional design, it is ideal for showcasing a seamless mobile app experience.',
+    stack: [{ name: 'React Native' }, { name: 'UI Kitten' }, { name: 'React Navigation' }],
+    image: '/src/assets/imgs/CoffeeApp.png',
     live: '',
-    github: '',
+    github: 'https://github.com/nccongg/CoffeeTime',
   },
   {
     num: '02',
-    category: 'Fullstack',
-    title: 'Project 02',
-    description: 'This is project 1.',
-    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'Javascript' }],
-    image: '/src/assets/imgs/TREASURE (6).png',
+    category: 'AI & Algorithms',
+    title: 'Sokoban-UI',
+    description:
+      'Developed a Sokoban puzzle solver using BFS, DFS, UCS, and A* algorithms with a Python-based GUI for visualization.',
+    stack: [{ name: 'Python' }, { name: 'Algorithms' }],
+    image: '/src/assets/imgs/Skonaban.png',
     live: '',
-    github: '',
+    github: 'https://github.com/nccongg/Sokoban-UI',
   },
-  {
-    num: '03',
-    category: 'Frontend',
-    title: 'Project 03',
-    description: 'This is project 3 - Mobile Project.',
-    stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'React Native' }],
-    image: '/src/assets/imgs/TREASURE (7).png',
-    live: '',
-    github: '',
-  },
+  // {
+  //   num: '03',
+  //   category: 'Frontend',
+  //   title: 'Project 03',
+  //   description: 'This is project 3 - Mobile Project.',
+  //   stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'React Native' }],
+  //   image: '/src/assets/imgs/TREASURE (7).png',
+  //   live: '',
+  //   github: '',
+  // },
 ];
 function Work() {
   const [project, setProject] = useState(projects[0]);
@@ -47,8 +50,6 @@ function Work() {
     const currentIndex = swpiper.activeIndex;
     setProject(projects[currentIndex]);
   };
-
-  const swiperRef = useRef(null);
 
   return (
     <div className={cx('container')}>
@@ -80,16 +81,18 @@ function Work() {
             </Tooltip.Root>
           </Tooltip.Provider>
 
-          <Tooltip.Provider delayDuration={100}>
-            <Tooltip.Root>
-              <Tooltip.Trigger asChild>
-                <div className={cx('live-project-wrapper')}>
-                  <FaGithub className={cx('live-project-icon')} />
-                </div>
-              </Tooltip.Trigger>
-              <Tooltip.Content className={cx('live-project-tooltip')}>Github repo</Tooltip.Content>
-            </Tooltip.Root>
-          </Tooltip.Provider>
+          <Link className={cx('link')} to={project.github}>
+            <Tooltip.Provider delayDuration={100}>
+              <Tooltip.Root>
+                <Tooltip.Trigger asChild>
+                  <div className={cx('live-project-wrapper')}>
+                    <FaGithub className={cx('live-project-icon')} />
+                  </div>
+                </Tooltip.Trigger>
+                <Tooltip.Content className={cx('live-project-tooltip')}>Github repo</Tooltip.Content>
+              </Tooltip.Root>
+            </Tooltip.Provider>
+          </Link>
         </div>
       </div>
       <div className={cx('silde-container')}>

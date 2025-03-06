@@ -43,6 +43,7 @@
 .project-description {
   color: var(--text-description-color);
   font-size: 15px;
+  margin-right: 40px;
 }
 
 .stack-container {
@@ -67,6 +68,10 @@
   margin-bottom: 20px;
   display: flex;
   gap: 10px;
+}
+
+.link {
+  color: white;
 }
 .live-project-wrapper {
   width: 80px;
@@ -109,11 +114,13 @@
 .swiper {
   // height: auto;
   // width: 500px;
-  background-color: red;
+  // background-color: red;
 }
 
 .swiper-img {
   object-fit: cover;
+  object-position: center;
+  width: 100%;
   height: 450px;
 }
 

@@ -24,10 +24,12 @@ function Home() {
             Engineer proficient in various programming languages and technologies.
           </p>
           <div className={cx('button-container')}>
-            <Button variant="outline" className={cx('downloadCVButton')}>
-              <span>Download CV</span>
-              <FiDownload className={cx('downLoadIcon')} />
-            </Button>
+            <a href="src/assets/pdfs/NguyenChiCong.pdf" download="NguyenChiCong_CV.pdf" className={cx('downloadCVa')}>
+              <Button variant="outline" className={cx('downloadCVButton')}>
+                <span>Download CV</span>
+                <FiDownload className={cx('downLoadIcon')} />
+              </Button>
+            </a>
             <div className={cx('social')}>
               <Social />
             </div>

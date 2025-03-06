@@ -17,23 +17,23 @@ const ServicesItems = [
     num: '02',
     title: 'App Development',
     description:
-      'We build websites that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
+      'We build apps that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
     link: '/',
   },
-  {
-    num: '03',
-    title: 'UI/UX Design',
-    description:
-      'We build websites that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
-    link: '/',
-  },
-  {
-    num: '04',
-    title: 'Logo Design',
-    description:
-      'We build websites that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
-    link: '/',
-  },
+  // {
+  //   num: '03',
+  //   title: 'UI/UX Design',
+  //   description:
+  //     'We build websites that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
+  //   link: '/',
+  // },
+  // {
+  //   num: '04',
+  //   title: 'Logo Design',
+  //   description:
+  //     'We build websites that are fast, secure, and easy to manage. We use the latest technologies to create custom websites that are tailored to your business.',
+  //   link: '/',
+  // },
 ];
 
 function Services() {

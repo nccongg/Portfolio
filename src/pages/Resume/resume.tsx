@@ -52,31 +52,31 @@ const experience = {
       positon: 'Mobile UI Developer Intern',
       duration: '07/2024 - 10/2024',
     },
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
+    // {
+    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
+    //   positon: 'Mobile UI Developer Intern',
+    //   duration: '07/2024 - 10/2024',
+    // },
+    // {
+    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
+    //   positon: 'Mobile UI Developer Intern',
+    //   duration: '07/2024 - 10/2024',
+    // },
+    // {
+    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
+    //   positon: 'Mobile UI Developer Intern',
+    //   duration: '07/2024 - 10/2024',
+    // },
+    // {
+    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
+    //   positon: 'Mobile UI Developer Intern',
+    //   duration: '07/2024 - 10/2024',
+    // },
+    // {
+    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
+    //   positon: 'Mobile UI Developer Intern',
+    //   duration: '07/2024 - 10/2024',
+    // },
   ],
 };
 
