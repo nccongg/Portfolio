@@ -8,7 +8,7 @@ function App() {
     document.title = 'My Portfolio';
   }, []);
   return (
-    <Router>
+    <Router basename="/Portfolio">
       <div className="App">
         <Routes>
           {publicRoutes.map((route, index) => {
