@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/routes';
 import DefaultLayout from './components/Layouts/DefaultLayout/DefaultLayout';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    document.title = 'My Portfolio';
+  }, []);
   return (
     <Router>
       <div className="App">
