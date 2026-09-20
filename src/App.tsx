@@ -9,9 +9,12 @@ function App() {
     document.title = 'Nguyen Chi Cong | Software Engineer';
   }, []);
 
+  // Dynamically set basename: '/Portfolio' on GitHub Pages, undefined (root '/') on Vercel
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined;
+
   return (
     <ThemeProvider>
-      <Router basename="/Portfolio">
+      <Router basename={basename}>
         <div className="App">
           <Routes>
             {publicRoutes.map((route, index) => {
