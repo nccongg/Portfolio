@@ -27,6 +27,13 @@
   --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.3);
   --shadow-glow: 0 0 25px rgba(14, 226, 124, 0.15);
 
+  --glass-bg: rgba(35, 35, 42, 0.65);
+  --glass-bg-hover: rgba(45, 45, 54, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-hover: rgba(14, 226, 124, 0.45);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  --glass-backdrop: blur(16px);
+
   --default-layout-header-height: 72px;
 }
 
@@ -55,6 +62,13 @@
 
   --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.06);
   --shadow-glow: 0 0 25px rgba(5, 150, 105, 0.15);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-hover: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-hover: rgba(5, 150, 105, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  --glass-backdrop: blur(16px);
 
   --default-layout-header-height: 72px;
 }
@@ -89,9 +103,22 @@ body {
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   background-color: var(--bg-color);
+  background-image:
+    radial-gradient(at 10% 15%, rgba(14, 226, 124, 0.09) 0px, transparent 55%),
+    radial-gradient(at 90% 25%, rgba(59, 130, 246, 0.07) 0px, transparent 50%),
+    radial-gradient(at 15% 70%, rgba(14, 226, 124, 0.06) 0px, transparent 50%),
+    radial-gradient(at 85% 85%, rgba(168, 85, 247, 0.06) 0px, transparent 50%);
+  background-attachment: fixed;
   color: var(--text-primary);
   transition: background-color 0.25s ease, color 0.25s ease;
   overflow-x: hidden;
+}
+
+[data-theme='light'] body {
+  background-image:
+    radial-gradient(at 10% 15%, rgba(5, 150, 105, 0.09) 0px, transparent 55%),
+    radial-gradient(at 90% 25%, rgba(59, 130, 246, 0.06) 0px, transparent 50%),
+    radial-gradient(at 15% 70%, rgba(5, 150, 105, 0.06) 0px, transparent 50%);
 }
 
 span,

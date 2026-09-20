@@ -29,12 +29,121 @@ import { motion } from 'framer-motion';
 
 const cx = classNames.bind(styles);
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 28 },
+const smoothDecel = [0.16, 1, 0.3, 1];
+
+const sectionHeaderViewport = { once: false, amount: 0.2 };
+const contentViewport = { once: false, amount: 0.12 };
+
+const fadeInUpVariants = {
+  hidden: {
+    opacity: 0,
+    y: 45,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.7, ease: smoothDecel },
+  },
+};
+
+const staggerContainerVariants = {
+  hidden: {
+    opacity: 0,
+    transition: { duration: 0.2 },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    scale: 0.95,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.7, ease: smoothDecel },
+  },
+};
+
+const slideLeftVariants = {
+  hidden: {
+    opacity: 0,
+    x: -55,
+    y: 15,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { duration: 0.75, ease: smoothDecel },
+  },
+};
+
+const slideRightVariants = {
+  hidden: {
+    opacity: 0,
+    x: 55,
+    y: 15,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { duration: 0.75, ease: smoothDecel },
+  },
+};
+
+const highlightCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 55,
+    scale: 0.93,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.75, ease: smoothDecel },
+  },
+};
+
+const heroVariants = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease: smoothDecel },
+  },
+};
+
+const avatarVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+    transition: { duration: 0.25, ease: 'easeIn' },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, delay: 0.1, ease: smoothDecel },
   },
 };
 
@@ -74,9 +183,10 @@ function Home() {
         <div className={cx('hero-content')}>
           <motion.div
             className={cx('hero-text')}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={heroVariants}
           >
             <div className={cx('role-badge')}>
               <span className={cx('pulse-dot')}></span>
@@ -115,70 +225,106 @@ function Home() {
             </div>
           </motion.div>
 
-          <div className={cx('hero-avatar')}>
+          <motion.div
+            className={cx('hero-avatar')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={avatarVariants}
+          >
             <Avatar />
-          </div>
+          </motion.div>
         </div>
 
         {/* VERIFIED STATS BAR */}
         <motion.div
           className={cx('stats-wrapper')}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={contentViewport}
+          variants={heroVariants}
         >
           <Stats />
         </motion.div>
       </section>
 
       {/* 2. ABOUT SECTION */}
-      <motion.section
-        id="about"
-        className={cx('section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="about" className={cx('section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>01 // ABOUT ME</span>
           <h2 className={cx('section-title')}>Background & Engineering Mindset</h2>
-        </div>
+        </motion.div>
 
         <div className={cx('about-grid')}>
-          <div className={cx('about-story-card')}>
+          <motion.div
+            className={cx('about-story-card')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideLeftVariants}
+          >
             <p className={cx('about-lead')}>{personalInfo.longBio}</p>
-            <div className={cx('pillars-grid')}>
-              <div className={cx('pillar-card')}>
+            <motion.div
+              className={cx('pillars-grid')}
+              variants={staggerContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={contentViewport}
+            >
+              <motion.div
+                className={cx('pillar-card')}
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className={cx('pillar-icon-box')}>📱</div>
                 <h3 className={cx('pillar-title')}>Mobile Engineering</h3>
                 <p className={cx('pillar-desc')}>
                   Production React Native development across iOS and Android, Redux state synchronization, offline
                   caching, and real-time ONNX camera recognition.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className={cx('pillar-card')}>
+              <motion.div
+                className={cx('pillar-card')}
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className={cx('pillar-icon-box')}>⚙️</div>
                 <h3 className={cx('pillar-title')}>Systems & IoT</h3>
                 <p className={cx('pillar-desc')}>
                   Robotics integration with C++/QML (Qt), WebSocket/UDP protocols, ASR/TTS speech engines, and Linux
                   aarch64 cross-compilation environments.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className={cx('pillar-card')}>
+              <motion.div
+                className={cx('pillar-card')}
+                variants={cardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className={cx('pillar-icon-box')}>🤖</div>
                 <h3 className={cx('pillar-title')}>Full-Stack & AI Systems</h3>
                 <p className={cx('pillar-desc')}>
                   Modern web architecture (React/Vite, Node.js, PostgreSQL) paired with autonomous testing agent workers
                   powered by Gemini and Playwright.
                 </p>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          <div className={cx('about-details-card')}>
+          <motion.div
+            className={cx('about-details-card')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideRightVariants}
+          >
             <h3 className={cx('card-heading')}>Quick Profile</h3>
             <div className={cx('profile-list')}>
               <div className={cx('profile-item')}>
@@ -206,30 +352,40 @@ function Home() {
                 <span className={cx('profile-val', 'highlight-val')}>Available for Opportunities</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* 3. EXPERIENCE SECTION */}
-      <motion.section
-        id="experience"
-        className={cx('section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="experience" className={cx('section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>02 // EXPERIENCE</span>
           <h2 className={cx('section-title')}>Work Experience & Internships</h2>
           <p className={cx('section-desc')}>
             Proven track record contributing to production codebases and applied research environments.
           </p>
-        </div>
+        </motion.div>
 
-        <div className={cx('experience-list')}>
+        <motion.div
+          className={cx('experience-list')}
+          variants={staggerContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={contentViewport}
+        >
           {experiences.map((exp, idx) => (
-            <div key={idx} className={cx('exp-card')}>
+            <motion.div
+              key={idx}
+              className={cx('exp-card')}
+              variants={cardVariants}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            >
               <div className={cx('exp-card-header')}>
                 <div className={cx('exp-title-group')}>
                   <h3 className={cx('exp-position')}>{exp.position}</h3>
@@ -259,34 +415,41 @@ function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
       {/* 4. PROJECTS SECTION */}
-      <motion.section
-        id="projects"
-        className={cx('section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="projects" className={cx('section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>03 // PROJECTS</span>
           <h2 className={cx('section-title')}>Featured Engineering Projects</h2>
           <p className={cx('section-desc')}>
             Highlighting graduation thesis research, mobile applications, and algorithmic problem-solving software.
           </p>
-        </div>
+        </motion.div>
 
         <div className={cx('projects-container')}>
           {/* Flagship: Graduation Thesis */}
           {projects
             .filter((p) => p.isThesis)
             .map((thesis) => (
-              <div key={thesis.id} className={cx('thesis-card')}>
+              <motion.div
+                key={thesis.id}
+                className={cx('thesis-card')}
+                initial="hidden"
+                whileInView="visible"
+                viewport={contentViewport}
+                variants={highlightCardVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className={cx('thesis-top')}>
                   <div className={cx('thesis-badge')}>
                     <FiAward className={cx('thesis-icon')} />
@@ -329,15 +492,26 @@ function Home() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
 
           {/* Other Projects Grid */}
-          <div className={cx('projects-grid')}>
+          <motion.div
+            className={cx('projects-grid')}
+            variants={staggerContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+          >
             {projects
               .filter((p) => !p.isThesis)
               .map((project) => (
-                <div key={project.id} className={cx('project-card')}>
+                <motion.div
+                  key={project.id}
+                  className={cx('project-card')}
+                  variants={cardVariants}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   {project.image && (
                     <div className={cx('project-image-wrap')}>
                       <img
@@ -375,32 +549,42 @@ function Home() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* 5. SKILLS SECTION */}
-      <motion.section
-        id="skills"
-        className={cx('section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="skills" className={cx('section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>04 // SKILLS</span>
           <h2 className={cx('section-title')}>Technical Stack & Competencies</h2>
           <p className={cx('section-desc')}>
             Organized into clear engineering domains supported by academic coursework and internship experience.
           </p>
-        </div>
+        </motion.div>
 
-        <div className={cx('skills-grid')}>
+        <motion.div
+          className={cx('skills-grid')}
+          variants={staggerContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={contentViewport}
+        >
           {skillCategories.map((cat, idx) => (
-            <div key={idx} className={cx('skill-category-card')}>
+            <motion.div
+              key={idx}
+              className={cx('skill-category-card')}
+              variants={cardVariants}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            >
               <h3 className={cx('category-title')}>{cat.category}</h3>
               <p className={cx('category-desc')}>{cat.description}</p>
               <div className={cx('skill-tags-wrap')}>
@@ -410,28 +594,33 @@ function Home() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.section>
+        </motion.div>
+      </section>
 
       {/* 6. EDUCATION & HONORS */}
-      <motion.section
-        id="education"
-        className={cx('section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="education" className={cx('section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>05 // EDUCATION & HONORS</span>
           <h2 className={cx('section-title')}>Academic Background & Awards</h2>
-        </div>
+        </motion.div>
 
         <div className={cx('edu-honors-grid')}>
           {/* Education Column */}
-          <div className={cx('edu-col')}>
+          <motion.div
+            className={cx('edu-col')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideLeftVariants}
+          >
             <h3 className={cx('col-heading')}>
               <FiBookOpen className={cx('heading-icon')} />
               <span>Education</span>
@@ -439,7 +628,11 @@ function Home() {
 
             <div className={cx('edu-cards-list')}>
               {educationList.map((edu, idx) => (
-                <div key={idx} className={cx('edu-card')}>
+                <motion.div
+                  key={idx}
+                  className={cx('edu-card')}
+                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                >
                   <div className={cx('edu-meta')}>
                     <span className={cx('edu-duration')}>{edu.duration}</span>
                     <span className={cx('edu-location')}>{edu.location}</span>
@@ -455,13 +648,19 @@ function Home() {
                       ))}
                     </ul>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Honors & Awards Column */}
-          <div className={cx('honors-col')}>
+          <motion.div
+            className={cx('honors-col')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideRightVariants}
+          >
             <h3 className={cx('col-heading')}>
               <FiAward className={cx('heading-icon')} />
               <span>Honors & Fellowships</span>
@@ -469,38 +668,47 @@ function Home() {
 
             <div className={cx('honors-cards-list')}>
               {honorsAndAwards.map((honor, idx) => (
-                <div key={idx} className={cx('honor-card')}>
+                <motion.div
+                  key={idx}
+                  className={cx('honor-card')}
+                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                >
                   <div className={cx('honor-year')}>{honor.year}</div>
                   <h4 className={cx('honor-title')}>{honor.title}</h4>
                   <p className={cx('honor-award')}>{honor.award}</p>
                   {honor.description && <p className={cx('honor-desc')}>{honor.description}</p>}
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* 7. CONTACT SECTION */}
-      <motion.section
-        id="contact"
-        className={cx('section', 'contact-section')}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-60px' }}
-        variants={sectionVariants}
-      >
-        <div className={cx('section-header')}>
+      <section id="contact" className={cx('section', 'contact-section')}>
+        <motion.div
+          className={cx('section-header')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={sectionHeaderViewport}
+          variants={fadeInUpVariants}
+        >
           <span className={cx('section-tag')}>06 // CONTACT</span>
           <h2 className={cx('section-title')}>Let's Connect & Work Together</h2>
           <p className={cx('section-desc')}>
             I am always open to discussing new opportunities, internship/fresher roles, or technical collaborations.
           </p>
-        </div>
+        </motion.div>
 
         <div className={cx('contact-wrapper')}>
           {/* Direct Contact Details */}
-          <div className={cx('contact-info-card')}>
+          <motion.div
+            className={cx('contact-info-card')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideLeftVariants}
+          >
             <h3 className={cx('info-card-title')}>Contact Information</h3>
             <p className={cx('info-card-subtitle')}>
               Feel free to reach out via email, phone, or connect with me on GitHub and LinkedIn.
@@ -563,10 +771,16 @@ function Home() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Working Contact Form */}
-          <div className={cx('contact-form-card')}>
+          <motion.div
+            className={cx('contact-form-card')}
+            initial="hidden"
+            whileInView="visible"
+            viewport={contentViewport}
+            variants={slideRightVariants}
+          >
             <form ref={formRef} onSubmit={handleContactSubmit} className={cx('contact-form')}>
               <h3 className={cx('form-title')}>Send a Direct Message</h3>
 
@@ -662,9 +876,9 @@ function Home() {
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }

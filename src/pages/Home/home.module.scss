@@ -217,11 +217,13 @@
 
 .about-story-card,
 .about-details-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 32px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow);
 
   @media (max-width: 640px) {
     padding: 24px 18px;
@@ -246,15 +248,18 @@
 }
 
 .pillar-card {
-  background-color: var(--bg-card);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 18px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.25s ease;
 
   &:hover {
+    background: rgba(255, 255, 255, 0.06);
     border-color: var(--border-hover-color);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
 }
 
@@ -326,16 +331,19 @@
 }
 
 .exp-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 30px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.25s ease;
 
   &:hover {
-    border-color: var(--border-hover-color);
-    transform: translateY(-2px);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-3px);
   }
 
   @media (max-width: 640px) {
@@ -451,11 +459,13 @@
 }
 
 .thesis-card {
-  background: linear-gradient(180deg, var(--bg-item-color) 0%, var(--bg-card) 100%);
-  border: 1px solid var(--border-hover-color);
-  border-radius: 14px;
+  background: linear-gradient(135deg, var(--glass-bg) 0%, rgba(14, 226, 124, 0.08) 100%);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border-hover);
+  border-radius: 16px;
   padding: 36px;
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-glow), var(--glass-shadow);
   position: relative;
   overflow: hidden;
 
@@ -608,18 +618,21 @@
 }
 
 .project-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow);
   display: flex;
   flex-direction: column;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: all 0.25s ease;
 
   &:hover {
-    border-color: var(--border-hover-color);
-    transform: translateY(-3px);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-4px);
   }
 }
 
@@ -699,16 +712,19 @@
 }
 
 .skill-category-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.25s ease;
 
   &:hover {
-    border-color: var(--border-hover-color);
-    transform: translateY(-2px);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-3px);
   }
 }
 
@@ -786,15 +802,19 @@
 
 .edu-card,
 .honor-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.25s ease;
 
   &:hover {
-    border-color: var(--border-hover-color);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    transform: translateY(-2px);
   }
 }
 
@@ -902,11 +922,13 @@
 
 .contact-info-card,
 .contact-form-card {
-  background-color: var(--bg-item-color);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
   padding: 32px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-shadow);
 
   @media (max-width: 640px) {
     padding: 24px 18px;
@@ -1098,18 +1120,21 @@
 
 .form-input,
 .form-textarea {
-  background-color: var(--bg-card);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 8px;
   padding: 12px 14px;
   color: var(--text-primary);
   font-family: inherit;
   font-size: 1.4rem;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 
   &:focus {
     border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.07);
     box-shadow: 0 0 0 2px var(--primary-subtle);
   }
 
