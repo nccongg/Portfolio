@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 function Stairs() {
-  const reverseIndex = (index: any) => {
+  const reverseIndex = (index: number) => {
     const totalStep = 6;
     return totalStep - index - 1;
   };

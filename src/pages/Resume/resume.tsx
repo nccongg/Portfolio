@@ -1,140 +1,27 @@
 import classNames from 'classnames/bind';
 import styles from './resume.module.scss';
-import { FaCss3, FaGithub, FaHtml5, FaJs, FaReact } from 'react-icons/fa';
 import * as Tabs from '@radix-ui/react-tabs';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import {
+  personalInfo,
+  experiences,
+  educationList,
+  skillCategories,
+  honorsAndAwards,
+} from '../../data/portfolioData';
 
 const cx = classNames.bind(styles);
-
-const about = {
-  title: 'About me',
-  description: 'This is information about me',
-  info: [
-    {
-      fieldName: 'Name',
-      fieldValue: 'Cong Nguyen Chi',
-    },
-    {
-      fieldName: 'Experienes',
-      fieldValue: '1+ Years',
-    },
-    {
-      fieldName: 'Phone',
-      fieldValue: '(+84) 973 371 776',
-    },
-    {
-      fieldName: 'Nationality',
-      fieldValue: 'VietNam',
-    },
-    {
-      fieldName: 'Email',
-      fieldValue: 'chicong442004@gmail.com',
-    },
-    {
-      fieldName: 'Freelance',
-      fieldValue: 'Available',
-    },
-    {
-      fieldName: 'Languages',
-      fieldValue: 'Vietnamese, English',
-    },
-  ],
-};
-
-const experience = {
-  icon: '',
-  title: 'My experience',
-  description: 'This is my experience',
-  items: [
-    {
-      company: 'Decentralized Applied Cryptography Lab, HCMUS',
-      positon: 'Mobile UI Developer Intern',
-      duration: '07/2024 - 10/2024',
-    },
-    // {
-    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
-    //   positon: 'Mobile UI Developer Intern',
-    //   duration: '07/2024 - 10/2024',
-    // },
-    // {
-    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
-    //   positon: 'Mobile UI Developer Intern',
-    //   duration: '07/2024 - 10/2024',
-    // },
-    // {
-    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
-    //   positon: 'Mobile UI Developer Intern',
-    //   duration: '07/2024 - 10/2024',
-    // },
-    // {
-    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
-    //   positon: 'Mobile UI Developer Intern',
-    //   duration: '07/2024 - 10/2024',
-    // },
-    // {
-    //   company: 'Decentralized Applied Cryptography Lab, HCMUS',
-    //   positon: 'Mobile UI Developer Intern',
-    //   duration: '07/2024 - 10/2024',
-    // },
-  ],
-};
-
-const education = {
-  icon: '',
-  title: 'My education',
-  description: 'This is my education',
-  items: [
-    {
-      institution: 'University of Science',
-      degree: 'Currently Studying',
-      duration: '2022 - now',
-    },
-    {
-      institution: 'Quang Trung High School for the Gifted',
-      degree: 'High School Diploma',
-      duration: '2019 - 2022',
-    },
-  ],
-};
-
-const skill = {
-  title: 'My skills',
-  description: 'This is my skills',
-  skillList: [
-    {
-      icon: FaHtml5,
-      name: 'Html 5',
-    },
-    {
-      icon: FaCss3,
-      name: 'Css 3',
-    },
-    {
-      icon: FaJs,
-      name: 'JavaScript',
-    },
-    {
-      icon: FaReact,
-      name: 'React.Js',
-    },
-    {
-      icon: FaGithub,
-      name: 'Github',
-    },
-  ],
-};
 
 function Resume() {
   return (
     <div className={cx('container')}>
-      <Tabs.Root className={cx('tabs-content')} defaultValue="about">
+      <Tabs.Root className={cx('tabs-content')} defaultValue="experience">
         <Tabs.List className={cx('list')}>
           <Tabs.Trigger className={cx('trigger')} value="experience">
             Experience
           </Tabs.Trigger>
           <Tabs.Trigger className={cx('trigger')} value="education">
-            Education
+            Education & Honors
           </Tabs.Trigger>
           <Tabs.Trigger className={cx('trigger')} value="skills">
             Skills
@@ -145,82 +32,156 @@ function Resume() {
         </Tabs.List>
 
         <div className={cx('content')}>
+          {/* Experience Tab */}
           <Tabs.Content className={cx('experience')} value="experience">
-            <h1 className={cx('item-title')}>{experience.title}</h1>
-            <p className={cx('item-description')}>{experience.description}</p>
+            <h1 className={cx('item-title')}>My Experience</h1>
+            <p className={cx('item-description')}>
+              Practical software engineering internships and research laboratory roles.
+            </p>
             <ScrollArea className={cx('scroll-wrapper')}>
-              {experience.items.map((item, index) => {
+              {experiences.map((item, index) => {
                 return (
                   <div key={index} className={cx('ex-item')}>
                     <span className={cx('duration')}>{item.duration}</span>
-                    <h3 className={cx('position')}>{item.positon}</h3>
+                    <h3 className={cx('position')}>{item.position}</h3>
                     <div className={cx('company-wraper')}>
                       <span className={cx('dot')}></span>
                       <p className={cx('company')}>{item.company}</p>
+                      {item.location && <span className={cx('location')}>• {item.location}</span>}
                     </div>
+                    {item.techStack && (
+                      <div className={cx('tech-chips')}>
+                        {item.techStack.map((tech, tIdx) => (
+                          <span key={tIdx} className={cx('chip')}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {item.bullets && item.bullets.length > 0 && (
+                      <ul className={cx('bullet-list')}>
+                        {item.bullets.map((bullet, bIndex) => (
+                          <li key={bIndex} className={cx('bullet-item')}>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 );
               })}
             </ScrollArea>
           </Tabs.Content>
 
+          {/* Education & Honors Tab */}
           <Tabs.Content className={cx('education')} value="education">
-            <h1 className={cx('item-title')}>{education.title}</h1>
-            <p className={cx('item-description')}>{education.description}</p>
+            <h1 className={cx('item-title')}>Education & Honors</h1>
+            <p className={cx('item-description')}>
+              Academic achievements, university degree, and competitive programming honors.
+            </p>
             <ScrollArea className={cx('scroll-wrapper')}>
-              {education.items.map((item, index) => {
+              {educationList.map((item, index) => {
                 return (
-                  <div key={index} className={cx('ex-item')}>
+                  <div key={`edu-${index}`} className={cx('ex-item')}>
                     <span className={cx('duration')}>{item.duration}</span>
                     <h3 className={cx('position')}>{item.institution}</h3>
                     <div className={cx('company-wraper')}>
                       <span className={cx('dot')}></span>
                       <p className={cx('company')}>{item.degree}</p>
                     </div>
+                    {item.highlights && (
+                      <ul className={cx('bullet-list')}>
+                        {item.highlights.map((h, hIdx) => (
+                          <li key={hIdx} className={cx('bullet-item')}>
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
+
+              {honorsAndAwards.map((item, index) => {
+                return (
+                  <div key={`honor-${index}`} className={cx('ex-item')}>
+                    <span className={cx('duration')}>{item.year}</span>
+                    <h3 className={cx('position')}>{item.title}</h3>
+                    <div className={cx('company-wraper')}>
+                      <span className={cx('dot')}></span>
+                      <p className={cx('company')}>{item.award}</p>
+                    </div>
+                    {item.description && (
+                      <p className={cx('honor-desc-text')}>{item.description}</p>
+                    )}
                   </div>
                 );
               })}
             </ScrollArea>
           </Tabs.Content>
 
+          {/* Skills Tab */}
           <Tabs.Content className={cx('skills')} value="skills">
-            <h1 className={cx('item-title')}>{skill.title}</h1>
-            <p className={cx('item-description')}>{skill.description}</p>
-            <div className={cx('skill-content')}>
-              {skill.skillList.map((item, index) => {
-                const SkillIcon = item.icon;
+            <h1 className={cx('item-title')}>My Skills</h1>
+            <p className={cx('item-description')}>
+              Categorized software development technologies and developer tooling.
+            </p>
+            <div className={cx('skills-tab-grid')}>
+              {skillCategories.map((cat, index) => {
                 return (
-                  <Tooltip.Provider key={index} delayDuration={200}>
-                    <Tooltip.Root>
-                      <Tooltip.Trigger asChild>
-                        <div className={cx('skill-item')} key={index}>
-                          <SkillIcon className={cx('skill-icon')} />
-                        </div>
-                      </Tooltip.Trigger>
-                      <Tooltip.Content className={cx('tooltip')}>
-                        {item.name}
-                        <Tooltip.Arrow />
-                      </Tooltip.Content>
-                    </Tooltip.Root>
-                  </Tooltip.Provider>
+                  <div key={index} className={cx('skill-cat-box')}>
+                    <h3 className={cx('cat-name')}>{cat.category}</h3>
+                    <div className={cx('badges-row')}>
+                      {cat.skills.map((skill, sIdx) => (
+                        <span key={sIdx} className={cx('skill-badge')}>
+                          {skill.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 );
               })}
             </div>
           </Tabs.Content>
 
+          {/* About Tab */}
           <Tabs.Content className={cx('about')} value="about">
-            <h1 className={cx('item-title')}>{about.title}</h1>
-            <p className={cx('item-description')}>{about.description}</p>
+            <h1 className={cx('item-title')}>About Me</h1>
+            <p className={cx('item-description')}>{personalInfo.bio}</p>
 
             <div className={cx('about-content')}>
-              {about.info.map((item, index) => {
-                return (
-                  <div className={cx('about-item')} key={index}>
-                    <p className={cx('field-name')}>{item.fieldName}</p>
-                    <p className={cx('field-value')}>{item.fieldValue}</p>
-                  </div>
-                );
-              })}
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Name</p>
+                <p className={cx('field-value')}>{personalInfo.name}</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Experience</p>
+                <p className={cx('field-value')}>1+ Years (Internships & Lab)</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Phone</p>
+                <p className={cx('field-value')}>{personalInfo.phone}</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Nationality</p>
+                <p className={cx('field-value')}>Vietnam</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Email</p>
+                <p className={cx('field-value')}>{personalInfo.email}</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Languages</p>
+                <p className={cx('field-value')}>Vietnamese, English (TOEIC 905)</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Location</p>
+                <p className={cx('field-value')}>{personalInfo.location}</p>
+              </div>
+              <div className={cx('about-item')}>
+                <p className={cx('field-name')}>Status</p>
+                <p className={cx('field-value', 'highlight')}>Available</p>
+              </div>
             </div>
           </Tabs.Content>
         </div>

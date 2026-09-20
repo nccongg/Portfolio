@@ -1,5 +1,7 @@
 .wrapper {
-  height: 100vh;
-  //   margin: 0;
-  //   background-color: red;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
 }

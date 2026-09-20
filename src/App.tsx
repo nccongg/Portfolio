@@ -2,32 +2,36 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/routes';
 import DefaultLayout from './components/Layouts/DefaultLayout/DefaultLayout';
 import { useEffect } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   useEffect(() => {
-    document.title = 'My Portfolio';
+    document.title = 'Nguyen Chi Cong | Software Engineer';
   }, []);
+
   return (
-    <Router basename="/Portfolio">
-      <div className="App">
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <DefaultLayout>
-                    <Page />
-                  </DefaultLayout>
-                }
-              />
-            );
-          })}
-        </Routes>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router basename="/Portfolio">
+        <div className="App">
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              const Page = route.component;
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <DefaultLayout>
+                      <Page />
+                    </DefaultLayout>
+                  }
+                />
+              );
+            })}
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

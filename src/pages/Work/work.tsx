@@ -2,112 +2,103 @@ import classNames from 'classnames/bind';
 import styles from './work.module.scss';
 import { useState } from 'react';
 import * as Tooltip from '@radix-ui/react-tooltip';
-import { FaArrowUpRightFromSquare } from 'react-icons/fa6';
 import { FaGithub } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import WorkSlideBtns from '../components/WorkSlideBtn';
-import { Link } from 'react-router-dom';
+import { projects } from '../../data/portfolioData';
 
 const cx = classNames.bind(styles);
 
-const projects = [
-  {
-    num: '01',
-    category: 'Mobile Frontend',
-    title: 'CoffeeTime',
-    description:
-      'CoffeeTime is a modern user interface for a coffee ordering app, built with React Native and Expo. This project features responsive and intuitive screens like home, coffee menu, order details, and user profile. Focused on delivering a clean, functional design, it is ideal for showcasing a seamless mobile app experience.',
-    stack: [{ name: 'React Native' }, { name: 'UI Kitten' }, { name: 'React Navigation' }],
-    image: 'imgs/CoffeeApp.png',
-    live: '',
-    github: 'https://github.com/nccongg/CoffeeTime',
-  },
-  {
-    num: '02',
-    category: 'AI & Algorithms',
-    title: 'Sokoban-UI',
-    description:
-      'Developed a Sokoban puzzle solver using BFS, DFS, UCS, and A* algorithms with a Python-based GUI for visualization.',
-    stack: [{ name: 'Python' }, { name: 'Algorithms' }],
-    image: 'imgs/Skonaban.png',
-    live: '',
-    github: 'https://github.com/nccongg/Sokoban-UI',
-  },
-  // {
-  //   num: '03',
-  //   category: 'Frontend',
-  //   title: 'Project 03',
-  //   description: 'This is project 3 - Mobile Project.',
-  //   stack: [{ name: 'Html 5' }, { name: 'Css3' }, { name: 'React Native' }],
-  //   image: '/src/assets/imgs/TREASURE (7).png',
-  //   live: '',
-  //   github: '',
-  // },
-];
 function Work() {
-  const [project, setProject] = useState(projects[0]);
-  const handleSlideChange = (swpiper: any) => {
-    const currentIndex = swpiper.activeIndex;
-    setProject(projects[currentIndex]);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const activeProject = projects[currentProjectIndex] || projects[0];
+
+  const handleSlideChange = (swiper: { activeIndex: number }) => {
+    setCurrentProjectIndex(swiper.activeIndex);
   };
 
   return (
     <div className={cx('container')}>
       <div className={cx('text-container')}>
-        <span className={cx('project-num')}>{project.num}</span>
+        <span className={cx('project-num')}>{`0${currentProjectIndex + 1}`}</span>
 
-        <h2 className={cx('project-title')}>{project.category} Project</h2>
-        <p className={cx('project-description')}>{project.description}</p>
+        {activeProject.isThesis && (
+          <span className={cx('thesis-tag')}>Graduation Thesis • {activeProject.duration}</span>
+        )}
+
+        <h2 className={cx('project-title')}>{activeProject.title}</h2>
+        <p className={cx('project-description')}>{activeProject.description}</p>
+
+        {activeProject.keyContributions && (
+          <ul className={cx('work-contributions')}>
+            {activeProject.keyContributions.map((c, cIdx) => (
+              <li key={cIdx} className={cx('work-contribution-item')}>
+                {c}
+              </li>
+            ))}
+          </ul>
+        )}
+
         <div className={cx('stack-container')}>
-          {project.stack.map((item, index) => {
+          {activeProject.stack.map((item, index) => {
             return (
-              <div key={index}>
-                {item.name}
-                {index !== project.stack.length - 1 && ','}
-              </div>
+              <span key={index} className={cx('stack-badge')}>
+                {item}
+              </span>
             );
           })}
         </div>
-        <div className={cx('border-line')}></div>
-        <div className={cx('link-container')}>
-          <Tooltip.Provider delayDuration={100}>
-            <Tooltip.Root>
-              <Tooltip.Trigger asChild>
-                <div className={cx('live-project-wrapper')}>
-                  <FaArrowUpRightFromSquare className={cx('live-project-icon')} />
-                </div>
-              </Tooltip.Trigger>
-              <Tooltip.Content className={cx('live-project-tooltip')}>Live project</Tooltip.Content>
-            </Tooltip.Root>
-          </Tooltip.Provider>
 
-          <Link className={cx('link')} to={project.github}>
-            <Tooltip.Provider delayDuration={100}>
-              <Tooltip.Root>
-                <Tooltip.Trigger asChild>
-                  <div className={cx('live-project-wrapper')}>
-                    <FaGithub className={cx('live-project-icon')} />
-                  </div>
-                </Tooltip.Trigger>
-                <Tooltip.Content className={cx('live-project-tooltip')}>Github repo</Tooltip.Content>
-              </Tooltip.Root>
-            </Tooltip.Provider>
-          </Link>
+        <div className={cx('border-line')}></div>
+
+        <div className={cx('link-container')}>
+          {activeProject.github && (
+            <a
+              className={cx('link')}
+              href={activeProject.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${activeProject.title} on GitHub`}
+            >
+              <Tooltip.Provider delayDuration={100}>
+                <Tooltip.Root>
+                  <Tooltip.Trigger asChild>
+                    <div className={cx('live-project-wrapper')}>
+                      <FaGithub className={cx('live-project-icon')} />
+                    </div>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content className={cx('live-project-tooltip')}>GitHub Repository</Tooltip.Content>
+                </Tooltip.Root>
+              </Tooltip.Provider>
+            </a>
+          )}
         </div>
       </div>
+
       <div className={cx('silde-container')}>
         <Swiper
           spaceBetween={30}
           slidesPerView={1}
           onSlideChange={handleSlideChange}
-          onSwiper={(swiper) => console.log(swiper)}
           className={cx('swiper-container')}
         >
           {projects.map((item, index) => {
             return (
               <SwiperSlide key={index} className={cx('swiper')}>
-                <img className={cx('swiper-img')} src={item.image} />
+                {item.image ? (
+                  <img
+                    className={cx('swiper-img')}
+                    src={`${import.meta.env.BASE_URL}${item.image}`}
+                    alt={item.title}
+                  />
+                ) : (
+                  <div className={cx('thesis-slide-placeholder')}>
+                    <div className={cx('thesis-badge-box')}>🎓 Flagship Thesis</div>
+                    <h3>{item.title}</h3>
+                    <p>React • Vite • Node.js • Express • PostgreSQL • Playwright • Gemini</p>
+                  </div>
+                )}
               </SwiperSlide>
             );
           })}

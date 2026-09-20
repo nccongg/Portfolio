@@ -2,51 +2,73 @@ import { useState } from 'react';
 import styles from './mobileNav.module.scss';
 import classNames from 'classnames/bind';
 import { FaAlignRight, FaTimes } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { personalInfo, navSections } from '../../../../data/portfolioData';
 
 const cx = classNames.bind(styles);
 
-const navItems = [
-  { name: 'Home', link: '/' },
-  { name: 'Services', link: '/services' },
-  { name: 'Resume', link: '/resume' },
-  { name: 'Work', link: '/work' },
-  { name: 'Contact', link: '/contact' },
-];
+interface MobileNavProps {
+  activeSection?: string;
+  onNavClick?: (e: React.MouseEvent, item: (typeof navSections)[0]) => void;
+}
 
-function MobileNav() {
+function MobileNav({ activeSection = 'hero', onNavClick }: MobileNavProps) {
   const [showNav, setShowNav] = useState(false);
-  const location = useLocation();
-  const pathName = location.pathname;
+
+  const handleItemClick = (e: React.MouseEvent, item: (typeof navSections)[0]) => {
+    setShowNav(false);
+    if (onNavClick) {
+      onNavClick(e, item);
+    }
+  };
 
   return (
     <div className={cx('container')}>
-      <div onClick={() => setShowNav(true)} className={cx('navIcon', { hideIcon: showNav })}>
+      <button
+        onClick={() => setShowNav(true)}
+        className={cx('navIcon', { hideIcon: showNav })}
+        aria-label="Open navigation menu"
+      >
         <FaAlignRight />
-      </div>
+      </button>
 
       <div>
-        <div className={cx('overlay', { showOverlay: showNav })} onClick={() => setShowNav(false)}></div>
-        <div className={cx('nav', { showNav: showNav })}>
-          <div className={cx('closeIcon')} onClick={() => setShowNav(false)}>
+        <div
+          className={cx('overlay', { showOverlay: showNav })}
+          onClick={() => setShowNav(false)}
+        ></div>
+
+        <nav className={cx('nav', { showNav: showNav })} aria-label="Mobile Navigation">
+          <button
+            className={cx('closeIcon')}
+            onClick={() => setShowNav(false)}
+            aria-label="Close navigation menu"
+          >
             <FaTimes />
-          </div>
+          </button>
+
           <div className={cx('navContent')}>
-            <Link className={cx('logo')} to={'/'}>
-              <h1 className={cx('logoText')}>Cong .</h1>
+            <Link className={cx('logo')} to="/" onClick={() => setShowNav(false)}>
+              <span className={cx('logoText')}>{personalInfo.shortName}</span>
             </Link>
 
             <div className={cx('navItemsList')}>
-              {navItems.map((item, index) => {
+              {navSections.map((item) => {
+                const isActive = activeSection === item.id;
                 return (
-                  <Link className={cx('navItem', { active: item.link == pathName })} key={index} to={item.link}>
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={(e) => handleItemClick(e, item)}
+                    className={cx('navItem', { active: isActive })}
+                  >
                     {item.name}
-                  </Link>
+                  </a>
                 );
               })}
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );

@@ -30,33 +30,124 @@
 }
 
 .project-num {
-  font-size: 100px;
+  font-size: 80px;
   color: transparent;
-  font-weight: bold;
-  -webkit-text-stroke: 0.1px white;
+  font-weight: 800;
+  -webkit-text-stroke: 1px var(--primary-color);
+  line-height: 1;
+}
+
+.thesis-tag {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--primary-subtle);
+  border: 1px solid var(--primary-border);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 .project-title {
-  font-size: 36px;
+  font-size: 32px;
+  color: var(--text-primary);
+  line-height: 1.25;
 }
 
 .project-description {
   color: var(--text-description-color);
   font-size: 15px;
-  margin-right: 40px;
+  line-height: 1.6;
+  margin-right: 20px;
+}
+
+.work-contributions {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+.work-contribution-item {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--text-description-color);
+  line-height: 1.5;
+
+  &::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color);
+  }
 }
 
 .stack-container {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stack-badge {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
   color: var(--primary-color);
+  font-size: 1.2rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.thesis-slide-placeholder {
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, var(--bg-item-color) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--border-hover-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  gap: 16px;
+
+  h3 {
+    font-size: 2.4rem;
+    color: var(--text-primary);
+    max-width: 400px;
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: var(--text-description-color);
+    max-width: 380px;
+  }
+}
+
+.thesis-badge-box {
+  background-color: var(--primary-subtle);
+  border: 1px solid var(--primary-border);
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
 }
 
 .border-line {
   width: 100%;
   height: 1px;
-  background-color: var(--primary-color);
-  opacity: 0.5;
+  background-color: var(--border-color);
   margin-top: 20px;
   @media (min-width: 1280px) {
     width: 90%;
