@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './mobileNav.module.scss';
+import styles from './MobileNav.module.scss';
 import classNames from 'classnames/bind';
 import { FaAlignRight, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

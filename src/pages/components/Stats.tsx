@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './stats.module.scss';
+import styles from './Stats.module.scss';
 import CountUp from 'react-countup';
 import { verifiedStats } from '../../data/portfolioData';
 
